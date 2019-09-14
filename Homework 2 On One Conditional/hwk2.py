@@ -15,8 +15,18 @@
 #   You don't need any conditionals for this problem
 #   Modulo and integer division are your friends
 
-def seconds_to_dhms(days, hours, minutes, seconds):
+def seconds_to_dhms(input):
+    day = input // (24 * 3600)
+    input = input % (24 * 3600)
+    hours = input // 3600
+
+    input %= 3600
+    minutes = n // 60
+
+    input %= 60
+    seconds = input
     
+    return (day,hours,minutes,seconds)
 
 # Function 1: Metricifier
 
@@ -31,8 +41,11 @@ def seconds_to_dhms(days, hours, minutes, seconds):
 # |    2 | pounds      | kilograms |
 # |    3 | gallons     | liters    |
 
-def metricifier():
-    if flag == 
+def metricifier(quantity, flag):
+    if quantity == 0:
+        return flag
+    
+    
 
 
 # Function 2: Valid triangle detector
@@ -44,7 +57,15 @@ def metricifier():
 # cannot be formed from sides of those lengths.  This function should return a
 # boolean value.
 
-
+def is_valid_triangle(side1,side2,side3):
+    if side1 > side2 + side3:
+        return False
+    elif side2 > side1 + side3:
+        return False
+    elif side3 > side1 + side2:
+        return False
+    else:
+        return True
 
 # Function 3: Rock, Paper, Scissors
 
@@ -58,26 +79,5 @@ def metricifier():
 #   Strings can be compared for equality just like numbers can
 #   Think about all the possible paths to each outcome before writing any code
 
-import random
 
-def find_rps_outcome():
-    p_choice = input("What do you choose?")
-    choices = {1 : 'rock', 2 : 'paper', 3 : 'scissors'}
-    cpu_choice = random.choice(('rock','paper','scissors'))
-    if p_choice == cpu_choice:
-        return print("Tie!")
-    if compare(p_choice,cpu_choice):
-        return print('You Win!')
-    else:
-        return print('You Lose!')
-
-def compare(player_choice,cpu_choice):
-    results = {('paper','rock') : True,
-               ('paper', 'scissors') : False,
-               ('rock','paper') : False,
-               ('rock','scissors') : True,
-               ('scissors','paper') : True,
-               ('scissors','rock') : False}
-    return results[(player_choice,cpu_choice)]
-
-find_rps_outcome()
+# This function is turned in from a seperate file...
