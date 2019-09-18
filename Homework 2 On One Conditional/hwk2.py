@@ -5,16 +5,6 @@
 
 # Function 0: Seconds into days, hours, minutes, and seconds
 
-# Write a function called seconds_to_dhms() which takes in a number representing
-# a number of seconds and returns the number of days, hours, minutes, and
-# seconds equivalent to the given number of seconds.  To simulate returning more
-# than one value from a function, use a line like this: return (thing1, thing2,
-# thing3)
-
-# Hints:
-#   You don't need any conditionals for this problem
-#   Modulo and integer division are your friends
-
 def seconds_to_dhms(input):
     day = input // (24 * 3600)
     input = input % (24 * 3600)
@@ -30,32 +20,17 @@ def seconds_to_dhms(input):
 
 # Function 1: Metricifier
 
-# Write a function called metricifier() that takes in two numbers.  The first
-# number represents a quantity and the second number is a flag which causes the
-# function to do different conversions after this scheme:
-
-# | flag | first input | output    |
-# |------+-------------+-----------|
-# |    0 | Fahrenheit  | celcius   |
-# |    1 | feet        | meters    |
-# |    2 | pounds      | kilograms |
-# |    3 | gallons     | liters    |
-
 def metricifier(quantity, flag):
-    if quantity == 0:
-        return flag
-    
-    
-
+    if flag == 0:
+        return (quantity -32)*5/9
+    elif flag == 1:
+        return (quantity)/3.281
+    elif flag == 2:
+        return (quantity)/0.453592
+    else:
+        return quantity * 3.78541
 
 # Function 2: Valid triangle detector
-
-# Write a function called is_valid_triangle() that takes in three positive
-# integers and then determines whether those integers could be the lengths of
-# the sides of a triangle.  This can be done by checking that the length of any
-# side is not greater than the sum of the other two; if it is, then a triangle
-# cannot be formed from sides of those lengths.  This function should return a
-# boolean value.
 
 def is_valid_triangle(side1,side2,side3):
     if side1 > side2 + side3:
@@ -69,15 +44,15 @@ def is_valid_triangle(side1,side2,side3):
 
 # Function 3: Rock, Paper, Scissors
 
-# Write a function called find_rps_outcome() which takes in two strings (when
-# the function is called, the strings will be one of "rock", "paper", or
-# "scissors").  If the first string wins it should return the string "Player 1
-# wins" and, if the second string wins, "Player 2 wins".  If there is a tie, it
-# should return the string "Tie game".
+def find_rps_outcome(player1,player2):
+    if player1 == player2:
+        return "Tie game"
+    elif player1 == "rock" and player2 == "scissors":
+        return "Player 1 wins"
+    elif player1 == "scissors" and player2 == "paper":
+        return "Player 1 wins"
+    elif player1 == "paper" and player2 == "rock":
+        return "Player 1 wins"
+    else:
+        return "Player 2 wins"
 
-# Hints:
-#   Strings can be compared for equality just like numbers can
-#   Think about all the possible paths to each outcome before writing any code
-
-
-# This function is turned in from a seperate file...
