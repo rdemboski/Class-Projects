@@ -15,7 +15,11 @@
 # the first _________ of a ______, so maybe convert the numbers into ______s.
 
 def same_first_digit(number1,number2,number3):
-    if str(number1[0]) == str(number2[0]) and str(number3[0]):
+    no1 = str(number1)    
+    no2 = str(number2)
+    no3 = str(number3)
+    
+    if no1[0] == no2[0] and no3[0]:
         return True
     else:
         return False    
@@ -54,12 +58,11 @@ def get_piece_value(piece):
         'rook': 5,
         'queen': 9
     }
-
-    chess.get('king', 'forklift')
-        
-    return chess[piece]
-
-
+    
+    if piece in chess:
+        return chess[piece]
+    else:
+        return None
 
 # Function 2: Which Season
 #
@@ -70,9 +73,32 @@ def get_piece_value(piece):
 # Use June and December 21st for the solstice dates, and March 20th and
 # September 22nd for the equinox dates.
 
+def which_season(month,day):
+
+    if month in (1, 2, 3):
+        season = "winter"
+        
+    elif month in (4, 5, 6):
+        season = "spring"
+
+    elif month in (7, 8, 9):
+        season = "summer"
+
+    else:
+        season = "autumn"
 
 
+    if (month == 3) and (day >= 20):
+        season = "spring"
+    elif (month == 6) and (day >= 21):
+        season = "summer"
+    elif (month == 9) and (day >= 22):
+        season = "autumn"
+    elif (month == 12) and (day >= 21):
+        season = "winter"
 
+    return season
+    
 # Function 3: Number to Word
 #
 # This one is definitely the hardest function we've written so far, so if it
@@ -109,10 +135,10 @@ num2words2 = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty'
 
 def number_to_word(number):
 
-    if 1 <= number < 19:
+    if 1 <= number <= 19:
         return num2words[number]
     elif 20 <= number <= 99:
         tens, below_ten = divmod(number, 10)
-        return num2words2[tens - 2] + ' ' +  num2words[below_ten]
+        return num2words2[tens - 2] + ' ' + num2words[below_ten]
     else:
         return None
