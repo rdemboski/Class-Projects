@@ -75,13 +75,13 @@ def get_piece_value(piece):
 
 def which_season(month,day):
 
-    if month in (1, 2, 3):
+    if month in (1, 2):
         season = "winter"
         
-    elif month in (4, 5, 6):
+    elif month in (4, 5):
         season = "spring"
 
-    elif month in (7, 8, 9):
+    elif month in (7, 8):
         season = "summer"
 
     else:
@@ -98,6 +98,7 @@ def which_season(month,day):
         season = "winter"
 
     return season
+
     
 # Function 3: Number to Word
 #
@@ -123,17 +124,18 @@ def which_season(month,day):
 # first: how would you do it for the numbers from 0 to 9?  How about for 0 to
 # 20?  Use your insights to solve the whole problem.
 
-num2words = {
-    1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', \
-    6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten', \
-    11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen', \
-    15: 'fifteen', 16: 'sixteen', 17: 'seventeen', 18: 'eighteen', 19: 'nineteen'
-}
-
-num2words2 = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
-
 
 def number_to_word(number):
+
+    num2words = {
+        1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', \
+        6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten', \
+        11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen', \
+        15: 'fifteen', 16: 'sixteen', 17: 'seventeen', 18: 'eighteen', 19: 'nineteen'
+    }
+    
+    num2words2 = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+    
 
     if 1 <= number <= 19:
         return num2words[number]
