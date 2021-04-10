@@ -1,0 +1,23 @@
+    // initialize table characters
+    public static final char DASH = '-';
+    public static final char DOUBLE_DASH = '=';
+    public static final char PIPE = '|';
+    public static final char CROSS = '+';
+    
+    // initialize line controls
+    public static final int SOLID = 1001;
+    public static final int BROKEN = 2002; 
+
+    // initialize table string components
+    public static final String PIPE_SPACE = "| ";
+    public static final String SPACE_PIPE = " |";
+    public static final String CROSS_SPACE = "+ ";
+    
+    // initialize table widths
+    public static final int PRECISION = 2;
+    public static final int TABLE_WIDTH = 44;
+    public static final int NAME_BLOCK_WIDTH = 29;
+    public static final int VALUE_BLOCK_WIDTH = 12;
+
+    // initialize two endlines constant
+    public static final int TWO_ENDLINES = 2;

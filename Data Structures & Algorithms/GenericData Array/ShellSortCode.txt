@@ -1,0 +1,51 @@
+       /**
+        * Uses Shell's sorting algorithm to sort Generic Data
+        * in an array of Objects
+        * <p>
+        * Shell's sorting algorithm is an optimized insertion algorithm
+        */
+       @SuppressWarnings( "unchecked" )
+       public void runShellSort()
+          {
+           int gap, gapPassIndex, insertionIndex;
+           GenericData tempItem, testItem;
+           boolean continueSearch;
+        
+           for( gap = arraySize / 2; gap > 0; gap /= 2 )
+              {
+               for( gapPassIndex = gap; 
+                                      gapPassIndex < arraySize; gapPassIndex++ )
+                  {
+                   tempItem = (GenericData)localArray[ gapPassIndex ];
+
+                   insertionIndex = gapPassIndex;
+
+                   continueSearch = true;
+                   
+                   while( continueSearch && insertionIndex >= gap )
+                      {
+                       testItem 
+                              = (GenericData)localArray[ insertionIndex - gap ];
+                       
+                       if( testItem.compareTo( tempItem ) >  0 )
+                          {
+                           localArray[ insertionIndex ] 
+                                           = localArray[ insertionIndex - gap ];  
+                        
+                           insertionIndex -= gap;
+                          }
+                      
+                       else
+                          {
+                           continueSearch = false;
+                          }
+                       
+                      }  // end search loop
+
+                   localArray[ insertionIndex ] = tempItem;
+                  }  // end list loop
+           
+              }  // end gap size setting loop   
+       
+          }
+             

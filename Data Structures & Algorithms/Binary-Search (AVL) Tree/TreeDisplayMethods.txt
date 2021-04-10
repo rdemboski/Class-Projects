@@ -1,0 +1,145 @@
+      /**
+       * [NOT ASSIGNED] Displays text-graphical representation of one level/line
+       * of the AVL tree
+       * 
+       * @param workingNode node reference at current recursive level
+       * 
+       * @param nodeHeight height of tree plus two
+       * for current height of nodes, including lowermost null children
+       * 
+       * @param displayLevel level of tree at which the current line
+       * of display is to be presented
+       * 
+       * @param workingLevel current level during recursive actions
+       */
+      private void displayAtTreeLevel( Node workingNode, int nodeHeight, 
+                                         int displayLevel, int workingLevel )
+         {
+          char charOut = workingNode.data;
+          
+          if( workingLevel == displayLevel )
+             {
+              displayValue( charOut, nodeHeight, workingLevel );
+      
+              return;
+             }
+          
+          if( workingNode.leftChildRef != null )
+             {
+              displayAtTreeLevel( workingNode.leftChildRef, nodeHeight,
+                                             displayLevel, workingLevel + 1 );
+             }
+          
+          else
+             {
+              displayEmptyNodeSpaces( nodeHeight, displayLevel, workingLevel + 1 );
+             }
+              
+          if( workingNode.rightChildRef != null )
+             {
+              displayAtTreeLevel( workingNode.rightChildRef, nodeHeight,
+                          displayLevel, workingLevel + 1 );
+             }
+      
+          else
+             {
+              displayEmptyNodeSpaces( nodeHeight, displayLevel, workingLevel + 1 );
+             }              
+         }
+
+      /**
+       * [NOT ASSIGNED] Method that displays null or blank nodes
+       * for a tree at null locations
+       * <p>
+       * Note: used by displayAtTreeLevel
+       * 
+       * @param nodeHeight height of tree plus two
+       * for current height of nodes, including lowermost null children
+       * 
+       * @param displayLevel level of the tree at which
+       * the display will be applied
+       * 
+       * @param workingLevel level of tree just below
+       * non-null node at which method is currently working
+       */
+      private void displayEmptyNodeSpaces( int nodeHeight, 
+                                          int displayLevel, int workingLevel )
+         {
+          int nodesToDisplay = toPower( 2, displayLevel - workingLevel ); 
+          char charOut = SPACE;
+          
+          if( displayLevel == workingLevel )
+             {
+              charOut = DASH;
+             }
+          
+          while( nodesToDisplay > 0 )
+             {
+              displayValue( charOut, nodeHeight, displayLevel );
+              
+              nodesToDisplay--;
+             }
+         }
+
+      /**
+       * [NOT ASSIGNED] Displays text-graphical representation of AVL tree
+       *  
+       */
+      public void displayTreeStructure()
+         {
+          int displayLevel, nodeHeight = getTreeHeight( treeRoot ) + 2;
+          int workingLevel = 1;
+          
+          if( treeRoot != null )
+             {
+              for( displayLevel = 1; displayLevel <= nodeHeight; displayLevel++ )
+                 {
+                  rowStartFlag = true;
+                  
+                  displayAtTreeLevel( treeRoot, nodeHeight, 
+                                               displayLevel, workingLevel );
+                  
+                  System.out.println();
+                 }
+             }
+          
+          else
+             {
+              System.out.println( "\nEmpty Tree - No Display");
+             }
+         }
+
+      /**
+       * [NOT ASSIGNED] Method used to display a character or color letter
+       * along with calculated leading spaces
+       * <p>
+       * Note: used in displayAtTreeLevel and displayEmptyNodeSpaces
+       * 
+       * @param data data value to display, either letter or color data
+       * 
+       * @param nodeHeight height of tree plus two
+       * for current height of nodes, including lowermost null children
+       * 
+       * @param workingLevel current level during recursive actions
+       */
+      private void displayValue( char data, int nodeHeight, int workingLevel )
+         {
+          int leadingSpaces;
+          
+          if( rowStartFlag )
+             {
+              leadingSpaces = toPower( 2, nodeHeight - workingLevel );
+      
+              rowStartFlag = false;
+             }
+          
+          else
+             {
+              leadingSpaces = toPower( 2, nodeHeight - workingLevel + 1 ) - 1;
+             }
+      
+          displayChars( leadingSpaces, SPACE );
+          
+          System.out.print( data );         
+         }
+
